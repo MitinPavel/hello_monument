@@ -17,6 +17,8 @@ require 'devise'
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
+  require 'capybara/rspec'
+
   Dir["./spec/support/**/*.rb"].sort.each { |f| require f}
 
   config.include ::Devise::TestHelpers, type: :controller
