@@ -19,6 +19,25 @@ describe "management of collections", :type => :feature do
     expect(page).to have_content("Ljubljana 2014")
   end
 
+  specify "a user can edit a collection" do
+    collection = create :collection, user: current_user, name: "Ljubljana 2014"
+
+    ::Dom::MainMenu.instance.visit_collections
+    expect(page).to_not have_content("Ljubljana 2014 (summer)")
+
+    within "#collection_#{collection.id}" do
+      click_link "Edit"
+    end
+
+    expect {
+      ::Dom::CollectionForm.instance.submit name: "Ljubljana 2014 (summer)"
+    }.to change { has_content? 'Collection was successfully updated.' }.from false
+
+    ::Dom::MainMenu.instance.visit_collections
+
+    expect(page).to have_content("Ljubljana 2014 (summer)")
+  end
+
   specify "a user can delete a collection" do
     collection = create :collection, user: current_user
 

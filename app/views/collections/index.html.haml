@@ -5,4 +5,6 @@
     %li
       = div_for collection do
         = collection.name
+        = link_to "Edit", edit_collection_path(collection)
+        |
         = link_to "Delete", collection_path(collection), method: :delete

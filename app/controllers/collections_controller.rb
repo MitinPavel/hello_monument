@@ -1,4 +1,8 @@
 class CollectionsController < ApplicationController
+  def index
+    @collections = current_user.collections.all
+  end
+
   def new
     @collection = current_user.collections.build
   end
@@ -14,8 +18,19 @@ class CollectionsController < ApplicationController
     end
   end
 
-  def index
-    @collections = current_user.collections.all
+  def edit
+    @collection = current_user.collections.find params[:id]
+  end
+
+  def update
+    @collection = current_user.collections.find params[:id]
+
+    if @collection.update collection_params
+      flash[:notice] = "Collection was successfully updated."
+      redirect_to edit_collection_path(@collection)
+    else
+      render :new
+    end
   end
 
   def destroy
