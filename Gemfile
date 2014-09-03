@@ -46,6 +46,8 @@ end
 group :test do
   gem 'capybara'
   gem 'domino'
+  gem 'factory_girl'
+  gem 'faker'
 end
 
 # Use debugger

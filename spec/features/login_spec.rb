@@ -5,7 +5,7 @@ describe "Login/logout process", :type => :feature do
   let(:password) { 'password1' }
 
   before do
-    ::User.create! email: email, password: password
+    create :user, email: email, password: password
   end
 
   context "[log in]" do

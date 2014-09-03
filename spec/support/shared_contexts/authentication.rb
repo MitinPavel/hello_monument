@@ -1,9 +1,9 @@
 shared_context "authenticated user" do
-  before do
-    ::User.create! email: 'some.email@exampel.com', password: 'some-password'
+  let(:current_user) { create :user }
 
+  before do
     visit '/'
-    ::Dom::LoginForm.instance.login_with 'some.email@exampel.com', 'some-password'
+    ::Dom::LoginForm.instance.login_with current_user.email, current_user.password
     
     expect(page).to have_content('Signed in successfully.')
   end

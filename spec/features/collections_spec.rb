@@ -18,4 +18,8 @@ describe "management of collections", :type => :feature do
 
     expect(page).to have_content("Ljubljana 2014")
   end
+
+  specify "a user can delete a collection" do
+
+  end
 end
