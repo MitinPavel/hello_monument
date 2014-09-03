@@ -25,9 +25,7 @@ describe "management of collections", :type => :feature do
     ::Dom::MainMenu.instance.visit_collections
     expect(page).to_not have_content("Ljubljana 2014 (summer)")
 
-    within "#collection_#{collection.id}" do
-      click_link "Edit"
-    end
+    within_collection_area(collection) { click_link "Edit" }
 
     expect {
       ::Dom::CollectionForm.instance.submit name: "Ljubljana 2014 (summer)"
@@ -44,11 +42,13 @@ describe "management of collections", :type => :feature do
     ::Dom::MainMenu.instance.visit_collections
 
     expect {
-      within "#collection_#{collection.id}" do
-        click_link "Delete"
-      end
+      within_collection_area(collection) { click_link "Delete" }
     }.to change { has_content? collection.name }.from true
 
     expect(page).to have_content("Collection was successfully deleted.")
+  end
+
+  def within_collection_area(collection, &block)
+    within "#collection_#{collection.id}", &block
   end
 end
