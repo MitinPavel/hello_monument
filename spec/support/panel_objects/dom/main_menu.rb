@@ -8,6 +8,10 @@ module Dom
       first
     end
 
+    def visit_search_page
+      within(id) { click_link 'Search' }
+    end
+
     def visit_new_collection
       within(id) { click_link 'New collection' }
     end

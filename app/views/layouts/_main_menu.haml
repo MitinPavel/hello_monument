@@ -1,5 +1,7 @@
 #main_menu
   - if user_signed_in?
+    = link_to "Search", root_path
+    |
     = link_to "Collections", collections_path
     |
     = link_to "New collection", new_collection_path

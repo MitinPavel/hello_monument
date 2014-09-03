@@ -2,3 +2,12 @@
   = current_user.email
   dashboard
 
+= form_tag root_path, method: :get, id: 'top-search-form' do
+  = search_field_tag :query, params[:query], size: 15, maxlength: 128, placeholder: "Search"
+  = submit_tag "Search"
+
+%ul#search_results
+  - @monuments.each do |monument|
+    %li
+      = div_for monument do
+        = link_to monument.name, monument_pictures_path(monument)
