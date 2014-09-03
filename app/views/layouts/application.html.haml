@@ -8,15 +8,7 @@
 
   %body
 
-    %p.notice= notice
-    %p.alert= alert
-
-    #main_menu
-      - if user_signed_in?
-        = link_to "Collections", collections_path
-        |
-        = link_to "New collection", new_collection_path
-        |
-        = link_to "Logout", destroy_user_session_path, method: :delete
+    = render 'layouts/flash'
+    = render 'layouts/main_menu'
 
     = yield

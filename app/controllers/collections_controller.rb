@@ -18,6 +18,15 @@ class CollectionsController < ApplicationController
     @collections = current_user.collections.all
   end
 
+  def destroy
+    @collection = current_user.collections.find params[:id]
+
+    @collection.destroy
+
+    flash[:notice] = "Collection was successfully deleted."
+    redirect_to new_collection_path
+  end
+
   private
 
   def collection_params

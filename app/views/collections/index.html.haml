@@ -2,4 +2,6 @@
 
 %ul
   - @collections.each do |collection|
-    %li= collection.name
+    %li
+      = div_for collection do
+        = collection.name

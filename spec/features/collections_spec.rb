@@ -12,7 +12,7 @@ describe "management of collections", :type => :feature do
 
     expect {
       ::Dom::CollectionForm.instance.submit name: "Ljubljana 2014"
-    }.to change { page.has_content? 'Collection was successfully created.' }.from false
+    }.to change { has_content? 'Collection was successfully created.' }.from false
 
     ::Dom::MainMenu.instance.visit_collections
 
@@ -20,6 +20,16 @@ describe "management of collections", :type => :feature do
   end
 
   specify "a user can delete a collection" do
+    collection = create :collection, user: current_user
 
+    ::Dom::MainMenu.instance.visit_collections
+
+    expect {
+      within "#collection_#{collection.id}" do
+        click_link "Delete"
+      end
+    }.to change { has_content? collection.name }.from true
+
+    expect(page).to have_content("Collection was successfully deleted.")
   end
 end
