@@ -1,0 +1,13 @@
+= form_for [:collection, monument], html: { class: 'monument_form' } do |f|
+
+  = render 'shared/form_errors', form: f
+
+  = f.label :name do
+    Name
+    = f.text_field :name
+
+  = f.label :description do
+    Description
+    = f.text_area :description
+
+  = f.submit 'Save'

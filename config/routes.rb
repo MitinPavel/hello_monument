@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
+  get 'monuments/new'
+
   root to: "dashboards#show"
 
   devise_for :users
 
   resource :dashboard, only: :show
-  resources :collections, only: [:index, :new, :create, :edit, :update, :destroy]
+  resources :collections, only: [:index, :new, :create, :edit, :update, :destroy] do
+    resources :monuments, only: [:new, :create]
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
