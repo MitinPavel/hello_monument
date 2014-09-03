@@ -14,10 +14,17 @@ describe "management of pictures", type: :feature, collection_list: true do
     end
     expect(has_selector? 'h1', text: "Pictures for Vodnik Monument").to be_truthy
 
-    # Upload a picture
+    # Failed attempt.
+    expect {
+      ::Dom::PictureForm.instance.upload description: "Hmm..."
+    }.to change { ::Dom::PictureForm.instance.errors }.from([]).to(["Data file must be selected"])
+
+    # Upload a picture.
     expect {
       expect {
-        ::Dom::PictureForm.instance.upload name: "evening", description: "Just beautiful"
+        ::Dom::PictureForm.instance.upload name: "evening",
+                                           description: "Just beautiful",
+                                           file: "#{Rails.root}/spec/fixtures/files/test_img.jpg"
       }.to change { has_content? "evening" }.from false
     }.to change { has_content? "Just beautiful" }.from false
     expect(has_content? 'Picture was successfully uploaded.').to be_truthy

@@ -30,6 +30,10 @@ RSpec.configure do |config|
 
   config.include CollectionListHelpers, collection_list: true
 
+  config.after(:suite) do
+    FileUtils.rm_rf(Dir["#{Rails.root}/public/system/storage/test/"])
+  end
+
 # The settings below are suggested to provide a good initial experience
 # with RSpec, but feel free to customize to your heart's content.
 =begin
