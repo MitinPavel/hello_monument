@@ -1,0 +1,18 @@
+%h1 New collection
+
+= form_for @collection, html: { class: 'collection_form' } do |f|
+
+  - if @collection.errors.any?
+    #error_explanation
+      %h2
+        = pluralize @collection.errors.count, "error"
+        prohibited
+        this collection from being saved:
+      %ul
+        - @collection.errors.full_messages.each do |msg|
+          %li= msg
+  
+  = f.label :name do
+    Name
+    = f.text_field :name
+  = f.submit 'Save'

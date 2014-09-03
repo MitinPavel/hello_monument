@@ -8,11 +8,11 @@ describe "management of collections", :type => :feature do
 
     expect {
       ::Dom::CollectionForm.instance.submit_empty_form
-    }.to change { ::Dom::CollectionForm.instance.errors }.from([]).to(["name should not be blank"])
+    }.to change { ::Dom::CollectionForm.instance.errors }.from([]).to(["Name can't be blank"])
 
     expect {
       ::Dom::CollectionForm.instance.submit name: "Ljubljana 2014"
-    }.to change { page.has_content? 'Was created.' }.from false
+    }.to change { page.has_content? 'Collection was successfully created.' }.from false
 
     ::Dom::MainMenu.instance.visit_collections
 
