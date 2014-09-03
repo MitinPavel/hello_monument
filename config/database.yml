@@ -17,8 +17,6 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  username: hello_monument
-  password: phohZiv7
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
@@ -26,15 +24,8 @@ default: &default
 development:
   <<: *default
   database: hello_monument_development
-
-  # The specified database role being used to connect to postgres.
-  # To create additional roles in postgres see `$ createuser --help`.
-  # When left blank, postgres will use the default role. This is
-  # the same name as the operating system user that initialized the database.
-  #username: hello_monument
-
-  # The password associated with the postgres role (username).
-  #password:
+  username: hello_monument
+  password: phohZiv7
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -60,6 +51,8 @@ development:
 test:
   <<: *default
   database: hello_monument_test
+  username: hello_monument
+  password: phohZiv7
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -83,5 +76,4 @@ test:
 production:
   <<: *default
   database: hello_monument_production
-  username: hello_monument
   password: <%= ENV['HELLO_MONUMENT_DATABASE_PASSWORD'] %>
