@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "management of monuments", :type => :feature do
+describe "management of monuments", type: :feature, collection_list: true do
   include_context "authenticated user"
 
   specify "a user can create a monument" do
@@ -20,9 +20,5 @@ describe "management of monuments", :type => :feature do
     within_collection_area(collection) do
       expect(page).to have_content("Vodnik Monument")
     end
-  end
-
-  def within_collection_area(collection, &block)
-    within "#collection_#{collection.id}", &block
   end
 end

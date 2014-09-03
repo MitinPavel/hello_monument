@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "management of collections", :type => :feature do
+describe "management of collections", type: :feature, collection_list: true do
   include_context "authenticated user"
 
   specify "a user can create a collection" do
@@ -46,9 +46,5 @@ describe "management of collections", :type => :feature do
     }.to change { has_content? collection.name }.from true
 
     expect(page).to have_content("Collection was successfully deleted.")
-  end
-
-  def within_collection_area(collection, &block)
-    within "#collection_#{collection.id}", &block
   end
 end
