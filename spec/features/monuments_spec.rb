@@ -59,4 +59,18 @@ describe "management of monuments", type: :feature, collection_list: true do
       expect(page).to have_content("Categories: journalist, poet")
     end
   end
+
+  specify "a user can delete a monument" do
+    monument = create :monument,
+                      name: "Vodnik Monument",
+                      collection: create(:collection, user: current_user, name: "Ljubljana 2014")
+
+    ::Dom::MainMenu.instance.visit_collections
+
+    expect {
+      within_monument_area(monument) { click_link "Delete" }
+      expect(page).to have_content("Monument was successfully deleted.")
+      ::Dom::MainMenu.instance.visit_collections
+    }.to change { has_content? 'Vodnik Monument' }.from true
+  end
 end

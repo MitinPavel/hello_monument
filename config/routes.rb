@@ -6,8 +6,9 @@ Rails.application.routes.draw do
   devise_for :users
 
   resource :dashboard, only: :show
+
   resources :collections, only: [:index, :new, :create, :edit, :update, :destroy] do
-    resources :monuments, only: [:new, :create, :edit, :update]
+    resources :monuments, only: [:new, :create, :edit, :update, :destroy]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

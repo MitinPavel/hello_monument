@@ -17,8 +17,10 @@
             %li
               = div_for monument do
                 = monument.name
-                - if monument.category_list.any?
-                  Categories:
-                  = monument.category_list.join ', '
-                  |
+                |
                 = link_to "Edit", edit_collection_monument_path(collection, monument)
+                |
+                = link_to "Delete", collection_monument_path(collection, monument), method: :delete
+                - if monument.category_list.any?
+                  | Categories:
+                  = monument.category_list.join ', '

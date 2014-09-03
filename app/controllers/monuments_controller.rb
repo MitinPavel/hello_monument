@@ -31,6 +31,15 @@ class MonumentsController < ApplicationController
     end
   end
 
+  def destroy
+    @monument = @collection.monuments.find params[:id]
+
+    @monument.destroy
+
+    flash[:notice] = "Monument was successfully deleted."
+    redirect_to collections_path
+  end
+
   private
 
   def load_collection

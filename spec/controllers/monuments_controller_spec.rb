@@ -28,4 +28,10 @@ RSpec.describe MonumentsController, :type => :controller do
       let(:action) { put :update, default_params }
     end
   end
+
+  describe "#destroy" do
+    it_behaves_like "a controller which requires authentication" do
+      let(:action) { delete :destroy, default_params }
+    end
+  end
 end
