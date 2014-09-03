@@ -8,4 +8,9 @@ FactoryGirl.define do
     name { Faker::Lorem.sentence }
     user
   end
+
+  factory :monument do
+    name { Faker::Lorem.sentence }
+    collection
+  end
 end

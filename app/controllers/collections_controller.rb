@@ -29,7 +29,7 @@ class CollectionsController < ApplicationController
       flash[:notice] = "Collection was successfully updated."
       redirect_to edit_collection_path(@collection)
     else
-      render :new
+      render :edit
     end
   end
 

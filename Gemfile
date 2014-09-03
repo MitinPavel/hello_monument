@@ -39,6 +39,8 @@ gem 'spring',        group: :development
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'acts-as-taggable-on'
+
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
 end

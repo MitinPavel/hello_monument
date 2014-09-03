@@ -16,6 +16,21 @@ class MonumentsController < ApplicationController
     end
   end
 
+  def edit
+    @monument = @collection.monuments.find params[:id]
+  end
+
+  def update
+    @monument = @collection.monuments.find params[:id]
+
+    if @monument.update monument_params
+      flash[:notice] = "Monument was successfully updated."
+      redirect_to edit_collection_monument_path(@collection, @monument)
+    else
+      render :edit
+    end
+  end
+
   private
 
   def load_collection
@@ -23,6 +38,6 @@ class MonumentsController < ApplicationController
   end
 
   def monument_params
-    params.require(:monument).permit :name, :description
+    params.require(:monument).permit :name, :description, :category_list
   end
 end

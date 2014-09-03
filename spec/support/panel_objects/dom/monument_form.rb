@@ -9,8 +9,10 @@ module Dom
 
     def submit(attributes)
       within id do
-        fill_in 'Name', with: attributes[:name]
-        fill_in 'Description', with: attributes[:description] if attributes[:description]
+        fill_in 'Name', with: attributes[:name]                   if attributes[:name]
+        fill_in 'Description', with: attributes[:description]     if attributes[:description]
+        fill_in 'Category list', with: attributes[:category_list] if attributes[:category_list]
+
         click_button 'Save'
       end
     end
