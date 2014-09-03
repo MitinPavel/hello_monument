@@ -56,6 +56,7 @@ group :test do
   gem 'domino'
   gem 'factory_girl'
   gem 'faker'
+  gem "codeclimate-test-reporter", require: nil
 end
 
 # Use debugger
