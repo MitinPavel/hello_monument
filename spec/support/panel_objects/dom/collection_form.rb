@@ -1,12 +1,11 @@
 require 'domino'
+require_relative 'form_base'
 
 module Dom
   class CollectionForm < ::Domino
-    selector '.collection_form'
+    include ::Dom::FormBase
 
-    def self.instance
-      first
-    end
+    selector '.collection_form'
 
     def submit_empty_form
       within(id) { click_button 'Save' }
@@ -16,16 +15,6 @@ module Dom
       within id do
         fill_in 'Name', with: attributes[:name]
         click_button 'Save'
-      end
-    end
-
-    def errors
-      within(id) do
-        if node.has_css? '#error_explanation'
-          Array(node.find('#error_explanation ul li')).map &:text
-        else
-          []
-        end
       end
     end
   end
