@@ -24,7 +24,7 @@ class CollectionsController < ApplicationController
     @collection.destroy
 
     flash[:notice] = "Collection was successfully deleted."
-    redirect_to new_collection_path
+    redirect_to collections_path
   end
 
   private
