@@ -43,6 +43,8 @@ gem 'acts-as-taggable-on'
 
 gem "paperclip", "~> 4.2"
 
+gem 'fuzzily'
+
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
 end

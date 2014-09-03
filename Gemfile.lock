@@ -64,6 +64,8 @@ GEM
       activesupport (>= 3.0.0)
     faker (1.4.3)
       i18n (~> 0.5)
+    fuzzily (0.3.2)
+      activerecord (>= 2.3.17)
     haml (4.0.5)
       tilt
     haml-rails (0.5.3)
@@ -182,6 +184,7 @@ DEPENDENCIES
   domino
   factory_girl
   faker
+  fuzzily
   haml-rails
   jbuilder (~> 2.0)
   jquery-rails

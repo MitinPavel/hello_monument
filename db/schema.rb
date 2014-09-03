@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140903112033) do
+ActiveRecord::Schema.define(version: 20140903190747) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,22 @@ ActiveRecord::Schema.define(version: 20140903112033) do
   end
 
   add_index "picture_infos", ["monument_id"], name: "index_picture_infos_on_monument_id", using: :btree
+
+  create_table "search_index_entries", force: true do |t|
+    t.integer "reference_id", null: false
+    t.text    "text",         null: false
+  end
+
+  create_table "search_trigrams", force: true do |t|
+    t.string  "trigram",     limit: 3
+    t.integer "score",       limit: 2
+    t.integer "owner_id"
+    t.string  "owner_type"
+    t.string  "fuzzy_field"
+  end
+
+  add_index "search_trigrams", ["owner_id", "owner_type", "fuzzy_field", "trigram", "score"], name: "index_for_match", using: :btree
+  add_index "search_trigrams", ["owner_id", "owner_type"], name: "index_by_owner", using: :btree
 
   create_table "storage_pictures", force: true do |t|
     t.string   "asset_file_name"
