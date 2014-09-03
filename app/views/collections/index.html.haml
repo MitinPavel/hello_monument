@@ -18,6 +18,8 @@
               = div_for monument do
                 = monument.name
                 |
+                = link_to "Pictures", monument_pictures_path(monument)
+                |
                 = link_to "Edit", edit_collection_monument_path(collection, monument)
                 |
                 = link_to "Delete", collection_monument_path(collection, monument), method: :delete

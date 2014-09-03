@@ -5,4 +5,5 @@ class User < ActiveRecord::Base
          #:recoverable, :rememberable, :trackable,
 
   has_many :collections, dependent: :destroy
+  has_many :monuments, through: :collections
 end

@@ -1,0 +1,13 @@
+= form_for picture_info, url: monument_pictures_path do |f|
+
+  = render 'shared/form_errors', form: f
+
+  = f.label :name do
+    Name
+    = f.text_field :name
+
+  = f.label :description do
+    Description
+    = f.text_area :description
+
+  = f.submit "Upload"
