@@ -6,9 +6,15 @@
 class Storage::Picture < ActiveRecord::Base
   self.table_name = :storage_pictures
 
-  has_attached_file :asset,
-                    url: "/system/storage/#{Rails.env}/:hash.:extension",
-                    hash_secret: "ak9Yae0oMaigh6iogi8vaeZaeengiuG8ohS3EimuAhc4ooliuophuo0LSaphoh0a"
+  asset_config = if Rails.env.production?
+                   {storage: :dropbox,
+                    dropbox_credentials: Rails.root.join("config/dropbox.yml")}
+                 else
+                   {url: "/system/storage/#{Rails.env}/:hash.:extension",
+                    hash_secret: "ak9Yae0oMaigh6iogi8vaeZaeengiuG8ohS3EimuAhc4ooliuophuo0LSaphoh0a"}
+                 end
+  has_attached_file :asset, asset_config
+
 
   validates_attachment_content_type :asset, :content_type => /\Aimage\/.*\Z/
   validates :asset, attachment_presence: true

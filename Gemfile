@@ -43,6 +43,7 @@ gem 'spring',        group: :development
 gem 'acts-as-taggable-on'
 
 gem "paperclip", "~> 4.2"
+gem "paperclip-dropbox", ">= 1.1.7"
 
 gem 'fuzzily'
 
