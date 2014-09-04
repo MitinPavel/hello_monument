@@ -18,6 +18,10 @@ class PicturesController < ApplicationController
     end
   end
 
+  def show
+    @picture_info = @monument.picture_infos.find params[:id]
+  end
+
   private
 
   def load_monument

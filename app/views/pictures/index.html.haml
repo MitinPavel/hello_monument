@@ -8,7 +8,7 @@
 
   - @picture_infos.each do |picture_info|
     .picture
-      = thumbnail_img_for(picture_info)
+      = link_to thumbnail_img_for(picture_info), monument_picture_path(@monument, picture_info)
       %h4.meta
         %span.label.label-default= picture_info.name
         = picture_info.description

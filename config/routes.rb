@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   end
 
   resources :monument, only: [] do
-    resources :pictures, only: [:index, :create]
+    resources :pictures, only: [:index, :create, :show]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

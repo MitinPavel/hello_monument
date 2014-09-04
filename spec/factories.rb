@@ -13,4 +13,9 @@ FactoryGirl.define do
     name { Faker::Lorem.sentence }
     collection
   end
+
+  factory :picture_info do
+    monument
+    data_id { rand(9999).to_s }
+  end
 end
