@@ -2,16 +2,16 @@
 
   = render 'shared/form_errors', form: f
 
-  = f.label :name do
-    Name
-    = f.text_field :name
+  .form-group
+    = f.label :name
+    = f.text_field :name, class: "form-control"
 
-  = f.label :description do
-    Description
-    = f.text_area :description
+  .form-group
+    = f.label :description
+    = f.text_area :description, class: "form-control"
 
-  = f.label :category_list do
-    Category list
-    = f.text_field :category_list
+  .form-group
+    = f.label :category_list
+    = f.text_field :category_list, class: "form-control"
 
-  = f.submit 'Save'
+  = f.submit 'Save', class: "btn btn-primary"

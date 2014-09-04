@@ -23,7 +23,7 @@ describe "Login/logout process", :type => :feature do
       submit_filled_login_form
 
       expect(page).to have_content('Signed in successfully.')
-      expect(page).to have_content('user@example.com dashboard')
+      expect(page).to have_content('user@example.com Logout')
     end
   end
 

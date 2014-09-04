@@ -2,27 +2,28 @@
 
 %ul
   - @collections.each do |collection|
-    %li
-      = div_for collection do
-        = collection.name
-        |
-        = link_to "New monument", new_collection_monument_path(collection)
-        |
-        = link_to "Edit", edit_collection_path(collection)
-        |
-        = link_to "Delete", collection_path(collection), method: :delete
+    .jumbotron
+      %li
+        = div_for collection do
+          = collection.name
+          |
+          = link_to "New monument", new_collection_monument_path(collection)
+          |
+          = link_to "Edit", edit_collection_path(collection)
+          |
+          = link_to "Delete", collection_path(collection), method: :delete
 
-        %ul
-          - collection.monuments.each do |monument|
-            %li
-              = div_for monument do
-                = monument.name
-                |
-                = link_to "Pictures", monument_pictures_path(monument)
-                |
-                = link_to "Edit", edit_collection_monument_path(collection, monument)
-                |
-                = link_to "Delete", collection_monument_path(collection, monument), method: :delete
-                - if monument.category_list.any?
-                  | Categories:
-                  = monument.category_list.join ', '
+          %ul
+            - collection.monuments.each do |monument|
+              %li
+                = div_for monument do
+                  = monument.name
+                  |
+                  = link_to "Pictures", monument_pictures_path(monument)
+                  |
+                  = link_to "Edit", edit_collection_monument_path(collection, monument)
+                  |
+                  = link_to "Delete", collection_monument_path(collection, monument), method: :delete
+                  - if monument.category_list.any?
+                    | Categories:
+                    = monument.category_list.join ', '

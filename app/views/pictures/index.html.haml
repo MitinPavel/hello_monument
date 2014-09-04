@@ -1,13 +1,14 @@
 %h1= "Pictures for #{@monument.name}"
 
-%h2 Upload new picture
-
-= render 'form', picture_info: @picture_info
+.jumbotron
+  %h3 Upload new picture
+  = render 'form', picture_info: @picture_info
 
 - if @picture_infos.any?
-  %h2 All pictures
 
   - @picture_infos.each do |picture_info|
-    = picture_info.name
-    = picture_info.description
-    = thumbnail_img_for(picture_info)
+    .picture
+      = thumbnail_img_for(picture_info)
+      %h4.meta
+        %span.label.label-default= picture_info.name
+        = picture_info.description

@@ -7,8 +7,10 @@
     = csrf_meta_tags
 
   %body
+    .container
+      .col-md-12
 
-    = render 'layouts/flash'
-    = render 'layouts/main_menu'
+        = render 'layouts/flash'
+        = render 'layouts/main_menu'
 
-    = yield
+        = yield
